@@ -1,4 +1,4 @@
-class Game {
+export class Game {
     constructor(playerOneName,playerTwoName){
         this.playerOneName = playerOneName;
         this.playerTwoName = playerTwoName;
@@ -9,4 +9,4 @@ class Game {
     }
 
 }
-export default Game 
+
