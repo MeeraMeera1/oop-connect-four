@@ -10,6 +10,15 @@ function updateUI() {
   } else {
     board.classList.remove("is-invisible");
     gameName.innerHTML = game.getName();
+    const player = game.currentPlayer
+    const playerClick = document.getElementById("click-targets");
+        if(player === 1) {
+            playerClick.classList.add("black")
+            playerClick.classList.remove("red")
+        } else {
+            playerClick.classList.add("red");
+            playerClick.classList.remove("black");
+        };
   }
 }
 
@@ -43,4 +52,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
     buttonStatus();
     updateUI();
   });
+
+  document
+    .getElementById("click-targets")
+    .addEventListener("click", () => {
+        game.playInColumn();
+        updateUI();
+    })
 });
