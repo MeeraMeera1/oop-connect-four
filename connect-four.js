@@ -1,4 +1,4 @@
-import {Game} from "./game.js";
+import { Game } from "./game.js";
 
 let game = undefined;
 
@@ -10,15 +10,38 @@ function updateUI() {
   } else {
     board.classList.remove("is-invisible");
     gameName.innerHTML = game.getName();
-    const player = game.currentPlayer
+
+    for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
+      for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+        let square = document.getElementById(
+          `square-${rowIndex}-${columnIndex}`
+        );
+        square.innerHTML = "";
+
+        const numOfPlayer = game.getTokenAt(rowIndex, columnIndex);
+        if (numOfPlayer === 1) {
+          const token = document.createElement("div");
+          token.classList.add("token");
+          token.classList.add("black");
+          square.appendChild(token);
+        } else if (numOfPlayer === 2){
+          const token = document.createElement("div");
+          token.classList.add("token");
+          token.classList.add("red")
+          square.appendChild(token)
+        }
+      }
+    }
+
+    const player = game.currentPlayer;
     const playerClick = document.getElementById("click-targets");
-        if(player === 1) {
-            playerClick.classList.add("black")
-            playerClick.classList.remove("red")
-        } else {
-            playerClick.classList.add("red");
-            playerClick.classList.remove("black");
-        };
+    if (player === 1) {
+      playerClick.classList.add("black");
+      playerClick.classList.remove("red");
+    } else {
+      playerClick.classList.add("red");
+      playerClick.classList.remove("black");
+    }
   }
 }
 
@@ -56,14 +79,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
   document
     .getElementById("click-targets")
     .addEventListener("click", (event) => {
-      const id = event.target.id
-      if(!id.includes('column-')) return;
-      const char = Number.parseInt(id[id.length-1])
+      const id = event.target.id;
+      if (!id.includes("column-")) return;
+      const char = Number.parseInt(id[id.length - 1]);
       game.playInColumn(char);
-        updateUI();
-    })
+      updateUI();
+    });
 });
-
 
 //  let column = new Column();
 //  console.log(column.add(5));

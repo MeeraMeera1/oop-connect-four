@@ -89,7 +89,7 @@ main {
   visibility: hidden;
 }
 
-.token {
+.token{
   box-sizing: border-box;
   border-radius: 65px;
   height: 65px;

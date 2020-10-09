@@ -19,7 +19,7 @@ export class Game {
     return `${this.playerOneName} vs ${this.playerTwoName}`;
   }
   playInColumn(index) {
-    this.column[index].add(this.currentPlayer);
+    this.columns[index].add(this.currentPlayer);
     if (this.currentPlayer === 1) {
       this.currentPlayer = 2;
     } else {

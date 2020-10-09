@@ -12,8 +12,8 @@ export default class Column {
     }
   }
 
-  getTokenAt(num){
-      return this.column[num]
+  getTokenAt(rowIndex){
+      return this.column[rowIndex]
 
   }
 }
