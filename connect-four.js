@@ -1,4 +1,5 @@
-import { Game } from "./game.js";
+import {Game} from "./game.js";
+import {Column} from './column.js'
 
 let game = undefined;
 
@@ -60,3 +61,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
         updateUI();
     })
 });
+
+
+ let column = new Column();
+ console.log(column.add(5));
+ console.log(column.column)
+column.add(4)
+console.log(column.column)
