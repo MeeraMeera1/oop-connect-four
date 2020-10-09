@@ -16,7 +16,10 @@ export default class Column {
       return this.column[rowIndex]
 
   }
+  isFull() {
+    if(this.column[0] !== null) {
+      return true;
+    }
+  }
 }
 
-// let column = new this.Column;
-// console.log(column.add(1));

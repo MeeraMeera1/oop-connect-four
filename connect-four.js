@@ -10,6 +10,7 @@ function updateUI() {
   } else {
     board.classList.remove("is-invisible");
     gameName.innerHTML = game.getName();
+  }
 
     for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
       for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
@@ -33,6 +34,16 @@ function updateUI() {
       }
     }
 
+    for(let i=0; i<=6; i++) {
+      let fullColumn = game.isColumnFull(i);
+      let element = document.getElementById(`column-${i}`)
+      if(fullColumn) {
+        element.classList.add("full");
+      } else {
+        element.classList.remove("full");
+      }
+    }
+
     const player = game.currentPlayer;
     const playerClick = document.getElementById("click-targets");
     if (player === 1) {
@@ -43,7 +54,7 @@ function updateUI() {
       playerClick.classList.remove("black");
     }
   }
-}
+
 
 window.addEventListener("DOMContentLoaded", (e) => {
   const nameOne = document.getElementById("player-1-name");
