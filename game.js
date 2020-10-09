@@ -13,5 +13,6 @@ export class Game {
       } else {
           this.currentPlayer = 1;
       }
+      Column.add(this.currentPlayer);
   };
 }
