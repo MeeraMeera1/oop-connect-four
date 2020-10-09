@@ -1,5 +1,4 @@
 import {Game} from "./game.js";
-import Column from './column.js'
 
 let game = undefined;
 
@@ -56,15 +55,18 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
   document
     .getElementById("click-targets")
-    .addEventListener("click", () => {
-        game.playInColumn();
+    .addEventListener("click", (event) => {
+      const id = event.target.id
+      if(!id.includes('column-')) return;
+      const char = Number.parseInt(id[id.length-1])
+      game.playInColumn(char);
         updateUI();
     })
 });
 
 
- let column = new Column();
- console.log(column.add(5));
- console.log(column.column)
-column.add(4)
-console.log(column.column)
+//  let column = new Column();
+//  console.log(column.add(5));
+//  console.log(column.column)
+// column.add(4)
+// console.log(column.column)
